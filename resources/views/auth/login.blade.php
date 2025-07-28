@@ -4,7 +4,7 @@
 
 @section('auth_header')
     <div class="text-center mb-3">
-        <img src="/images/logo-kurhanz.png" alt="Kurhanz Trans Logo" style="max-width:200px;max-height:90px;margin-bottom:18px;">
+        <img src="{{ asset('images/logo-kurhanz.png') }}" alt="Kurhanz Trans Logo" style="max-width:200px;max-height:90px;margin-bottom:18px;">
         <h2 class="font-weight-bold" style="color:#222;">Asset Management System</h2>
     </div>
     
@@ -72,14 +72,73 @@
 @section('css')
 <style>
     .login-page {
-        background: #f4f6f9;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
+    
     .login-card-body {
-        border-radius: 10px;
+        border-radius: 15px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        background: white;
+        padding: 2rem;
     }
+    
     .login-logo {
         font-weight: bold;
         color: #3c8dbc;
+    }
+    
+    .login-box {
+        width: 100%;
+        max-width: 400px;
+    }
+    
+    .form-control {
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        padding: 12px 15px;
+        font-size: 14px;
+    }
+    
+    .form-control:focus {
+        border-color: #3c8dbc;
+        box-shadow: 0 0 0 0.2rem rgba(60, 141, 188, 0.25);
+    }
+    
+    .btn-primary {
+        background-color: #3c8dbc;
+        border-color: #3c8dbc;
+        border-radius: 8px;
+        padding: 12px;
+        font-weight: 600;
+    }
+    
+    .btn-primary:hover {
+        background-color: #367fa9;
+        border-color: #367fa9;
+    }
+    
+    .input-group-text {
+        background-color: #f8f9fa;
+        border: 1px solid #ddd;
+        border-radius: 0 8px 8px 0;
+    }
+    
+    .icheck-primary input[type="checkbox"]:checked + label::before {
+        background-color: #3c8dbc;
+        border-color: #3c8dbc;
+    }
+    
+    .auth-footer a {
+        color: #3c8dbc;
+        text-decoration: none;
+    }
+    
+    .auth-footer a:hover {
+        text-decoration: underline;
     }
 </style>
 @stop
