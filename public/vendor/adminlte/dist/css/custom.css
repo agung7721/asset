@@ -1,0 +1,16 @@
+.navbar-asahanz {
+    background-color: #343a40;
+    padding: 0.5rem;
+}
+
+.brand-image {
+    height: 33px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.brand-text {
+    color: white;
+    font-size: 1.2rem;
+    margin-left: 5px;
+}
