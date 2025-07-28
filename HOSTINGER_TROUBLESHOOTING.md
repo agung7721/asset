@@ -1,62 +1,5 @@
 # Troubleshooting Aplikasi di Hostinger
 
-## Masalah Tampilan Login Page
-
-### 1. Logo Tidak Tampil
-**Gejala:** Logo Kurhanz Trans tidak muncul, hanya teks
-**Solusi:**
-```bash
-# Pastikan file logo ada di folder public/images/
-ls -la public/images/logo-kurhanz.png
-
-# Jika tidak ada, upload file logo ke folder tersebut
-# Pastikan path di login.blade.php menggunakan asset() helper
-<img src="{{ asset('images/logo-kurhanz.png') }}" alt="Kurhanz Trans Logo">
-```
-
-### 2. CSS AdminLTE Tidak Dimuat
-**Gejala:** Tampilan terlihat plain tanpa styling
-**Solusi:**
-```bash
-# Pastikan folder vendor/adminlte ada
-ls -la public/vendor/adminlte/
-
-# Jika tidak ada, install AdminLTE
-composer require jeroennoten/laravel-adminlte
-
-# Publish assets AdminLTE
-php artisan adminlte:install
-
-# Clear cache
-php artisan config:clear
-php artisan view:clear
-```
-
-### 3. Asset Path Tidak Benar
-**Gejala:** CSS/JS tidak dimuat, console error 404
-**Solusi:**
-```bash
-# Periksa .htaccess di folder public/
-cat public/.htaccess
-
-# Pastikan mod_rewrite aktif di Hostinger
-# Di cPanel > Apache Configuration > Enable mod_rewrite
-
-# Test asset URL
-curl -I https://khz.aulvan.com/vendor/adminlte/dist/css/adminlte.css
-```
-
-### 4. Permission File
-**Gejala:** File tidak dapat diakses
-**Solusi:**
-```bash
-# Set permission yang benar
-chmod -R 755 public/
-chmod -R 755 storage/
-chmod -R 755 bootstrap/cache/
-chmod 644 .env
-```
-
 ## Error 500 Internal Server Error
 
 ### 1. Cek Error Log
@@ -193,37 +136,6 @@ $user->save();
 php artisan session:table
 php artisan migrate
 ```
-
-## Langkah-langkah Perbaikan Tampilan
-
-### 1. Upload File yang Diperbaiki
-```bash
-# Upload file yang sudah diperbaiki:
-# - resources/views/auth/login.blade.php
-# - public/.htaccess
-# - deploy_hostinger.sh
-```
-
-### 2. Jalankan Script Deployment
-```bash
-# Di terminal Hostinger
-chmod +x deploy_hostinger.sh
-./deploy_hostinger.sh
-```
-
-### 3. Periksa Asset
-```bash
-# Pastikan semua asset AdminLTE ada
-ls -la public/vendor/adminlte/dist/css/
-ls -la public/vendor/adminlte/dist/js/
-ls -la public/vendor/adminlte/dist/img/
-```
-
-### 4. Test Tampilan
-- Buka https://khz.aulvan.com/login
-- Periksa browser console untuk error
-- Pastikan logo tampil dengan benar
-- Pastikan styling AdminLTE dimuat
 
 ## Common Commands untuk Hostinger
 
